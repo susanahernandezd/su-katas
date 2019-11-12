@@ -2,24 +2,28 @@ import { fizzbuzz } from '@/fizzbuzz'
 
 describe('Fizz Buzz should', () => {
 
-  it('prints the recived number', () => {
-    expect(fizzbuzz(1)).toBe(1)
+  [1, 2, 4].forEach((number) => {
+    it('prints the recived number', () => {
+      expect(fizzbuzz(number)).toBe(number.toString())
+    });
   });
 
   [3, 6, 9].forEach((number) => {
-    it(`prints "Fizz" if ${number} is a multiple of 3`, () => {
+    it(`prints "Fizz" if the number (${number}) is multiple of 3`, () => {
       expect(fizzbuzz(number)).toBe('Fizz')
     })
   });
 
   [5, 10, 20].forEach((number) => {
-    it(`prints "Buzz" if ${number} is a multiple of 5`, () => {
+    it(`prints "Buzz" if the number (${number}) is multiple of 5`, () => {
       expect(fizzbuzz(number)).toBe('Buzz')
     })
   });
   
-  it('prints "FizzBuzz" if the recived number is both multiple of 3 & 5', () => {
-    expect(fizzbuzz(15)).toBe('FizzBuzz')
-  })
+  [15, 30, 60].forEach((number) => {
+    it(`return FizzBuzz if the number (${number}) is multiple of 3 and 5`, () => {
+      expect(fizzbuzz(number)).toBe("FizzBuzz")
+    });
+  });
   
 })

@@ -1,24 +1,24 @@
-const Multiples = {
+const Rules = {
   THREE: {
-    numbers: 3,
+    multiplier: 3,
     result: 'Fizz'
   },
   FIVE: {
-    numbers: 5,
+    multiplier: 5,
     result: 'Buzz'
   }
 }
 
 export const fizzbuzz = (number) => {
-  let result = ''
+  let output = ''
 
-  Object.keys(Multiples).forEach((multiple) => {
-    if ( isMultipleOfANumber(number, Multiples[multiple].numbers ) ){
-      result += Multiples[multiple].result
+  Object.keys(Rules).forEach((rule) => {
+    if ( isMultipleOf(number, Rules[rule].multiplier ) ){
+      output += Rules[rule].result
     }
   })
 
-  return result ? result : number
+  return output ? output : number.toString()
 }
 
-const isMultipleOfANumber = (number, multiple) => number % multiple === 0
+const isMultipleOf = (number, multiple) => number % multiple === 0
