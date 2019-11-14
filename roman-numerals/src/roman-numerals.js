@@ -1,8 +1,7 @@
 export const numberToRoman = (number) => {
-  if(number === 1) {
-    return 'I'
+  let output = ''
+  for (let i = 0; i < number; i++) {
+    output += 'I'
   }
-  if(number === 2) {
-    return 'II'
-  }
+  return output
 } 
