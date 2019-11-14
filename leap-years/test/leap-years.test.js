@@ -18,5 +18,11 @@ describe('Leap years should', () => {
       expect(isLeapYear(year)).toBe(true)
     })
   });
+
+  [2017, 2018, 2019].forEach((year) => {
+    it(`return false if the year (${year}) is not divisible by 4`, () => {
+      expect(isLeapYear(year)).toBe(false)
+    })
+  });
   
 })
