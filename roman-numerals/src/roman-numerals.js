@@ -2,6 +2,8 @@ export const numberToRoman = (number) => {
   let output = ''
   if(number === 4) {
     output = 'IV'
+  } else if (number === 9) {
+    output = 'IX'
   } else if( number >= 5 ) {
     output += 'V'
 
