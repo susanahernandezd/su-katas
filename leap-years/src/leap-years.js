@@ -1,11 +1,5 @@
 export const isLeapYear = (year) => {
-  if( Number.isInteger(year/400) ) {
-    return true
-  }
-
-  if( Number.isInteger(year/4) && !Number.isInteger(year/100)) {
-    return true
-  }
-
-  return false
+  return isDivisible(year, 400) || (isDivisible(year, 4) && !isDivisible(year, 100))
 }
+
+const isDivisible = (number, divisor) => number % divisor === 0
