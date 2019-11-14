@@ -1,16 +1,14 @@
 import { numberToRoman } from '@/roman-numerals'
 
 describe('Roman Numerals should', () => {
-  it('convert 1 to it\s equivalent to roman number I', () => {
-    expect(numberToRoman(1)).toBe('I')
-  })
-  it('convert 2 to it\s equivalent to roman number II', () => {
-    expect(numberToRoman(2)).toBe('II')
-  })
-  it('convert 3 to it\s equivalent to roman number III', () => {
-    expect(numberToRoman(3)).toBe('III')
-  })
-  it('convert 4 to it\s equivalent to roman number IV', () => {
-    expect(numberToRoman(4)).toBe('IV')
+  [
+    [1, 'I'],
+    [2, 'II'],
+    [3, 'III'],
+    [4, 'IV']
+  ].forEach(([number, roman]) => {
+    it(`convert ${number} to it\s equivalent to roman number ${roman}`, () => {
+      expect(numberToRoman(number)).toBe(roman)
+    })
   })
 })
