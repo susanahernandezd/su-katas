@@ -7,7 +7,8 @@ describe('Roman Numerals should', () => {
     [3, 'III'],
     [4, 'IV'],
     [5, 'V'],
-    [6, 'VI']
+    [6, 'VI'],
+    [7, 'VII']
   ].forEach(([number, roman]) => {
     it(`convert ${number} to it\s equivalent to roman number ${roman}`, () => {
       expect(numberToRoman(number)).toBe(roman)
