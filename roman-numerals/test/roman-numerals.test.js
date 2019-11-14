@@ -10,4 +10,7 @@ describe('Roman Numerals should', () => {
   it('convert 3 to it\s equivalent to roman number III', () => {
     expect(numberToRoman(3)).toBe('III')
   })
+  it('convert 4 to it\s equivalent to roman number IV', () => {
+    expect(numberToRoman(4)).toBe('IV')
+  })
 })
