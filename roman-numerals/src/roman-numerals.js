@@ -1,30 +1,20 @@
+const RomanLibrary = [
+  [10, 'X'],
+  [9, 'IX'],
+  [5, 'V'],
+  [4, 'IV'],
+  [1, 'I']
+]
+
 export function toRoman(number) {
   let output = ''
 
-  while(number >= 10) {
-    output += 'X'
-    number -= 10
-  }
-
-  while(number === 9) {
-    output += 'IX'
-    number -= 9
-  }
-
-  while(number >= 5) {
-    output += 'V'
-    number -= 5
-  }
-
-  while(number >= 4) {
-    output += 'IV'
-    number -= 4
-  }
-
-  while(number > 0) {
-    output += 'I'
-    number -= 1
-  }
+  RomanLibrary.forEach(([value, roman]) => {
+    while(number >= value) {
+      output += roman
+      number -= value
+    }
+  })
 
   return output
 }
