@@ -12,6 +12,9 @@ describe('Roman Numerals should', () => {
     [9, 'IX'],
     [10, 'X'],
     [13, 'XIII'],
+    [14, 'XIV'],
+    [15, 'XV'],
+    [19, 'XIX'],
   ]  .forEach(([number, romanNumber]) => {
     it(`converts ${number} to it's roman representation ${romanNumber}`, () => {
       expect(toRoman(number)).toBe(romanNumber)
