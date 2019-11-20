@@ -35,4 +35,8 @@ describe('String Calculator should', () => {
     expect(stringCalculator('1001,1,2')).toBe(3)
   })
 
+  it('allow separators of any length if surrounded by square brackets', () => {
+    expect(stringCalculator('//[***]\n1***2***3')).toBe(6)
+  })
+
 })

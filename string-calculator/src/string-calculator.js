@@ -1,13 +1,13 @@
 const DEFAULT_RESULT = 0
+const SEPARATORS = ",|\n"
 const MAX_NUM = 1000
 const Regex = {
-  SEPARATORS: /,|\n/,
-  SEPARATOR_STRING: /\/\/([^0-9])\n/
+  SEPARATOR_STRING: /\/\/(.*)\n/
 }
 
 export function stringCalculator (string) {
   let options = {
-    separators: Regex.SEPARATORS,
+    separators: SEPARATORS,
     stringNumbers: string
   }
 
@@ -24,8 +24,8 @@ export function stringCalculator (string) {
 
 }
 
-function sum (options) {
-  return options.stringNumbers.split(options.separators).reduce((acc, string) => {
+function sum ({ stringNumbers, separators }) {
+  return stringNumbers.split(new RegExp(separators)).reduce((acc, string) => {
     const number = parseInt(string)
     acc = acc + (number < MAX_NUM ? number : 0)
     return acc
@@ -46,7 +46,7 @@ function getCustomSeparatorString (string) {
 }
 
 function negativeNumbers ({ stringNumbers, separators }) {
-  return stringNumbers.split(separators).reduce((acc, number) => {
+  return stringNumbers.split(new RegExp(separators)).reduce((acc, number) => {
     if (number < 0) {
       acc += ` ${number}`
     }
