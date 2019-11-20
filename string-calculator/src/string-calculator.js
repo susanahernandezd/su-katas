@@ -1,31 +1,53 @@
-export function stringCalculator (string) {
-  let separators = /,|\n/
-  let stringNumbers = string
+const DEFAULT_RESULT = 0
+const Regex = {
+  SEPARATORS: /,|\n/,
+  SEPARATOR_STRING: /\/\/([^0-9])\n/
+}
 
-  if (string.startsWith('//')) {
-    const separatorString = string.split(/\/\/([^0-9])\n/).filter((values) => values)
-    separators = separatorString[0]
-    stringNumbers = separatorString[1]
+export function stringCalculator (string) {
+  let options = {
+    separators: Regex.SEPARATORS,
+    stringNumbers: string
   }
 
-  const negatives = negativeNumbers(stringNumbers)
+  if (hasCustomSeparator(string)) {
+    options = getCustomSeparatorString(string)
+  }
+
+  const negatives = negativeNumbers(options)
   if (negatives) {
     return `error: negatives not allowed: ${negatives}`
   }
 
-  const sum = stringNumbers.split(separators).reduce((acc, number) => {
+  return sum(options)
+
+}
+
+function sum (options) {
+  return options.stringNumbers.split(options.separators).reduce((acc, number) => {
     acc = acc + parseInt(number)
     return acc
-  }, 0)
+  }, 0) || DEFAULT_RESULT
+}
 
-  return sum || 0
+function hasCustomSeparator (string) {
+  return string.startsWith('//')
+}
 
-  function negativeNumbers (stringNumbers) {
-    return stringNumbers.split(separators).reduce((acc, number) => {
-      if (number < 0) {
-        acc += ` ${number}`
-      }
-      return acc.trim()
-    }, '')
+function getCustomSeparatorString (string) {
+  const separatorString = string.split(Regex.SEPARATOR_STRING).filter((values) => values)
+
+  return {
+    separators: separatorString[0],
+    stringNumbers: separatorString[1]
   }
+}
+
+function negativeNumbers ({ stringNumbers, separators }) {
+  return stringNumbers.split(separators).reduce((acc, number) => {
+    if (number < 0) {
+      acc += ` ${number}`
+    }
+    return acc.trim()
+  }, '')
 }
