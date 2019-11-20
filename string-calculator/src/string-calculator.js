@@ -1,3 +1,3 @@
-export function stringCalculator () {
-  return true
+export function stringCalculator (string) {
+  return 0
 }
