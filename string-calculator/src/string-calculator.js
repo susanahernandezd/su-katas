@@ -1,4 +1,5 @@
 const DEFAULT_RESULT = 0
+const MAX_NUM = 1000
 const Regex = {
   SEPARATORS: /,|\n/,
   SEPARATOR_STRING: /\/\/([^0-9])\n/
@@ -24,8 +25,9 @@ export function stringCalculator (string) {
 }
 
 function sum (options) {
-  return options.stringNumbers.split(options.separators).reduce((acc, number) => {
-    acc = acc + parseInt(number)
+  return options.stringNumbers.split(options.separators).reduce((acc, string) => {
+    const number = parseInt(string)
+    acc = acc + (number < MAX_NUM ? number : 0)
     return acc
   }, 0) || DEFAULT_RESULT
 }
