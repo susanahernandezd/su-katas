@@ -8,13 +8,7 @@ export function stringCalculator (string) {
     stringNumbers = separatorString[1]
   }
 
-  const negatives = stringNumbers.split(separators).reduce((acc, number) => {
-    if ( number < 0) {
-      acc += ` ${number}`
-    }
-    return acc.trim()
-  }, '')
-
+  const negatives = negativeNumbers(stringNumbers)
   if (negatives) {
     return `error: negatives not allowed: ${negatives}`
   }
@@ -25,4 +19,13 @@ export function stringCalculator (string) {
   }, 0)
 
   return sum || 0
+
+  function negativeNumbers (stringNumbers) {
+    return stringNumbers.split(separators).reduce((acc, number) => {
+      if (number < 0) {
+        acc += ` ${number}`
+      }
+      return acc.trim()
+    }, '')
+  }
 }
