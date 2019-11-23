@@ -2,7 +2,8 @@ const DEFAULT_RESULT = 0
 const SEPARATORS = ",|\n"
 const MAX_NUM = 1000
 const Regex = {
-  SEPARATOR_STRING: /\/\/(.*)\n/
+  SEPARATOR_STRING: /\/\/(.*)\n/,
+  BETWEEN_BRAQUETS: /\[(.*?)\]/g
 }
 
 export function stringCalculator (string) {
@@ -12,8 +13,9 @@ export function stringCalculator (string) {
   }
 
   if (hasCustomSeparator(string)) {
-    options = getCustomSeparatorString(string)
+    options = getCustomOptions(string)
   }
+console.log('options', options)
 
   const negatives = negativeNumbers(options)
   if (negatives) {
@@ -36,11 +38,12 @@ function hasCustomSeparator (string) {
   return string.startsWith('//')
 }
 
-function getCustomSeparatorString (string) {
+function getCustomOptions (string) {
   const separatorString = string.split(Regex.SEPARATOR_STRING).filter((values) => values)
+  const multipleSeparator = separatorString[0].match(Regex.BETWEEN_BRAQUETS)
 
   return {
-    separators: separatorString[0],
+    separators: multipleSeparator ? multipleSeparator.join('|') : separatorString[0],
     stringNumbers: separatorString[1]
   }
 }

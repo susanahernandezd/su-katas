@@ -39,4 +39,8 @@ describe('String Calculator should', () => {
     expect(stringCalculator('//[***]\n1***2***3')).toBe(6)
   })
 
+  it('allow multiple single-character separators of any length if surrounded by square brackets', () => {
+    expect(stringCalculator('//[*][%]\n1*2%3')).toBe(6)
+  })
+
 })
