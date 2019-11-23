@@ -15,7 +15,6 @@ export function stringCalculator (string) {
   if (hasCustomSeparator(string)) {
     options = getCustomOptions(string)
   }
-console.log('options', options)
 
   const negatives = negativeNumbers(options)
   if (negatives) {

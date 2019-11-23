@@ -43,4 +43,8 @@ describe('String Calculator should', () => {
     expect(stringCalculator('//[*][%]\n1*2%3')).toBe(6)
   })
 
+  it('handle multiple separators with any character length', () => {
+    expect(stringCalculator('//[foo][bar]\n1foo2bar3')).toBe(6)
+  })
+
 })
