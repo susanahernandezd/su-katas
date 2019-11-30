@@ -6,7 +6,11 @@ const Regex = {
   BETWEEN_BRAQUETS: /\[(.*?)\]/g
 }
 
+//Try to use the "domain" concepts present in the requirements
+// `string` is not a concept is the type of the argument
 export function stringCalculator (string) {
+  // Rethink the concept of "options"
+  // and try to find another way to do the `getCustomOptions`
   let options = {
     separators: SEPARATORS,
     stringNumbers: string
@@ -18,6 +22,7 @@ export function stringCalculator (string) {
 
   const negatives = negativeNumbers(options)
   if (negatives) {
+    // try to throw an Error and test it `throw new Error()`
     return `error: negatives not allowed: ${negatives}`
   }
 

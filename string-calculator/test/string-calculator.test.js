@@ -27,7 +27,7 @@ describe('String Calculator should', () => {
     })
   })
 
-  it('thow an error ("negatives not allowed + negative numbers") if the string contains negatives', () => {
+  it('throw an error ("negatives not allowed + negative numbers") if the string contains negatives', () => {
     expect(stringCalculator('1,-2,-3')).toBe('error: negatives not allowed: -2 -3')
   })
 
