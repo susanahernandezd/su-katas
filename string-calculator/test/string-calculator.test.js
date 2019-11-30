@@ -28,7 +28,7 @@ describe('String Calculator should', () => {
   })
 
   it('throw an error ("negatives not allowed + negative numbers") if the string contains negatives', () => {
-    expect(stringCalculator('1,-2,-3')).toBe('error: negatives not allowed: -2 -3')
+    expect(() => stringCalculator('1,-2,-3')).toThrow('error: negatives not allowed: -2 -3')
   })
 
   it('ignore numbers bigger than 1000', () => {

@@ -22,8 +22,7 @@ export function stringCalculator (string) {
 
   const negatives = negativeNumbers(options)
   if (negatives) {
-    // try to throw an Error and test it `throw new Error()`
-    return `error: negatives not allowed: ${negatives}`
+    throw new Error(`error: negatives not allowed: ${negatives}`)
   }
 
   return sum(options)
